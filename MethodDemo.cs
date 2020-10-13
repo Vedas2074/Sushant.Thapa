@@ -1,7 +1,7 @@
 using System;
 public class MethodDemo
 {
-    static void Main()
+    static void Main14()
     {
         MethodDemo obj21 = new MethodDemo();
         // double sum = obj21.Sum(123.123, 23432.234);
@@ -30,5 +30,6 @@ public class MethodDemo
             }
         }
     }
+
 
 }
