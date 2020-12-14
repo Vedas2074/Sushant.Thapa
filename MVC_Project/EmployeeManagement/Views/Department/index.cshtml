@@ -1,0 +1,32 @@
+@model List<Department>
+@{
+    ViewData["Title"] = "Department";
+}
+
+
+<h1>This is Department page</h1>
+<table class="table my-5">
+  <thead>
+    <tr>
+        <th scope="col">Id</th>
+      <th scope="col">Code</th>
+      <th scope="col">Sector</th>
+      <th scope="col">Branch</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+      @foreach (var data in Model)
+        {
+                          <tr scope="row">
+                          <td><a href="/department/detail?id=@data.Id">@data.Id</a></td>
+                          <td>@data.Code</td>
+                          <td>@data.Sector</td>
+                          <td>@data.Branch</td>
+                         </tr>
+        }
+
+
+  </tbody>
+</table>

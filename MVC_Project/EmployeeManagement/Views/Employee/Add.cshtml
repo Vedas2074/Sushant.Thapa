@@ -1,0 +1,46 @@
+@model Employee
+@{
+    ViewData["Title"] = "Add Employee";
+}
+
+
+<h1>Add New Employees</h1>
+
+<hr>
+
+
+<form asp-controller="Employee" asp-action="Add" method="POST">
+  <div class="form-group">
+    <label asp-for="FirstName"></label>
+    <span asp-validation-for="FirstName"></span>
+    <input type="text" class="form-control"   placeholder="Enter Your First Name">
+  </div>
+  <div class="form-group">
+    <label asp-for="LastName"></label>
+     <span asp-validation-for="LastName"></span>
+    <input type="text" class="form-control"  placeholder="Enter Your Last Name">
+  </div>
+  <div class="form-group">
+    <label asp-for="Address"></label>
+    <textarea type="text" class="form-control"   placeholder="Enter Your Address"></textarea>
+  </div>
+   <div class="form-group">
+    <label asp-for="Age"></label>
+    <input type="number" class="form-control"   placeholder="Enter your Age">
+  </div>
+  <div class="form-group">
+    <label asp-for="Gender"></label>
+    <input type="text" class="form-control"  placeholder="Enter Your Gender">
+  </div>
+  <div class="form-group">
+    <label asp-for="Salary"></label>
+    <input type="number" class="form-control"   placeholder="Salary">
+  </div>
+  <div class="form-group">
+    <label asp-for="Shifts"></label>
+    <input type="text" class="form-control"   placeholder="Shifts">
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">Save Employee</button>
+</form>
