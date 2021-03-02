@@ -1,0 +1,19 @@
+@model Department
+@{
+    
+    ViewData["Title"] = "delete Employee";
+}
+
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">Id : @Model.Id</li>
+  <li class="list-group-item">Code : @Model.Code</li>
+  <li class="list-group-item">Sector : @Model.Sector</li>
+  <li class="list-group-item">Branch: @Model.Branch</li>
+ 
+</ul>
+
+<form asp-controller="Department" asp-action="Delete" method="POST">
+  <input type="hidden" asp-for="Id">
+    <button type="submit" class="btn btn-danger">Delete Department</button>
+</form>

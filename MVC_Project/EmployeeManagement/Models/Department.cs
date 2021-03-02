@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 public class Department{
     public int Id { get; set; }
-
+    
     public int Code { get; set; }
 
     public string Sector { get; set; }

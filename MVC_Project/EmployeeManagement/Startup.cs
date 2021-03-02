@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using  EmployeeManagement.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeManagement
 {
@@ -24,6 +26,8 @@ namespace EmployeeManagement
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+           services.AddDbContext<EMContext>(options =>
+        options.UseSqlite("Data Source =EM.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

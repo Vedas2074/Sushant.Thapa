@@ -1,38 +1,74 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using EmployeeManagement.Models;
+using EmployeeManagement.Data;
+using System.Collections.Generic;
+
 
 namespace EmployeeManagement.Controllers
 {
     public class EmployeeController : Controller
     {
-
-        public IActionResult index()
+       private EMContext db;
+        public EmployeeController(EMContext _db)
         {
-            var moreemployees = Employee.GetEmployees();
+            db=_db;
+        }
+
+        public IActionResult Index()
+        {
+            var moreemployees = db.Employees.ToList();
             return View(moreemployees);
 
         }
-        public ActionResult detail(int id)
+        public ActionResult Detail(int id)
         {
-            var employees = Employee.GetEmployees();
-            Employee employee = employees.FirstOrDefault(x => x.Id.ToString() == id.ToString());
+           var employee = db.Employees.Find(id);
             return View(employee);
 
         }
 
-        public ActionResult add()
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var employee = db.Employees.Find(id);
+            
+            return View(employee);
+        }
+        [HttpPost]
+        public ActionResult Edit(Employee employee)
+        {
+            db.Employees.Attach(employee);
+            db.Employees.Update(employee);
+            db.SaveChanges();
+            return RedirectToAction("Index");    
+        }
+        public ActionResult Delete(int id)
+        {
+            var employee = db.Employees.Find(id);
+            return View(employee);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Employee employee)
+        {
+            db.Employees.Attach(employee);
+            db.Employees.Remove(employee);
+            db.SaveChanges();
+           return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public ActionResult Add()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult<string> Add(Employee employee) => "record Saved";
-
+         public ActionResult Add(Employee employee)
+        {
+            db.Employees.Add(employee);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
     }
 }

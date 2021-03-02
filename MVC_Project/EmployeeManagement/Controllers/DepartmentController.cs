@@ -12,20 +12,29 @@ namespace EmployeeManagement.Controllers
     public class DepartmentController : Controller
     {
 
-        public IActionResult index()
+        public IActionResult Index()
         {
             var depart = Department.GetDepartments();
             return View(depart);
 
         }
 
-        public ActionResult detail(int id)
+        public ActionResult Detail(int id)
         {
             var departments = Department.GetDepartments();
             Department department = departments.FirstOrDefault(x => x.Id.ToString() == id.ToString());
             return View(department);
         }
-        public ActionResult add()
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        public ActionResult Edit()
+        {
+            return View();
+        }
+        public ActionResult Delete()
         {
             return View();
         }

@@ -1,23 +1,24 @@
+
 @model Employee
 @{
-    ViewData["Title"] = "Add Employee";
+    ViewData["Title"] = "Edit Employee";
 }
 
 
-<h1>Add New Employees</h1>
-
-<hr>
+<h1>EDIT PAGE</h1>
 
 
-<form asp-controller="Employee" asp-action="Add" method="POST">
+
+<form asp-controller="Employee" asp-action="Edit" method="POST">
+ <input type="hidden" asp-for="Id">
   <div class="form-group">
-    <label asp-for="FirstName"></label>
-    <span class="text-danger" asp-validation-for="FirstName"></span>
+    <label asp-for="FirstName">First Name</label>
+    <span asp-validation-for="FirstName"></span>
     <input type="text" class="form-control" asp-for="FirstName"  placeholder="Enter Your First Name">
   </div>
   <div class="form-group">
     <label asp-for="LastName"></label>
-     <span class="text-danger" asp-validation-for="LastName"></span>
+     <span asp-validation-for="LastName"></span>
     <input type="text" class="form-control" asp-for="LastName" placeholder="Enter Your Last Name">
   </div>
   <div class="form-group">
@@ -28,8 +29,5 @@
     <label asp-for="Age"></label>
     <input type="number" class="form-control" asp-for="Age"  placeholder="Enter your Age">
   </div>
-  
-
-
-  <button type="submit" class="btn btn-primary">Save Employee</button>
+    <button type="submit" class="btn btn-primary">Update Employee</button>
 </form>
